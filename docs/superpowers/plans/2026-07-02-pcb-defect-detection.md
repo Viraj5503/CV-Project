@@ -84,3 +84,4 @@ Vector DB (chromadb) over self-authored IPC-A-610-*style* acceptability summarie
 ## Status log
 
 - 2026-07-02: Plan written. Task 1 in progress — dataset cloned to `data/raw/PCB_DATASET/` (693 imgs verified: 115-116/class), repo scaffolded, `.venv` (3.11.15) created.
+- 2026-07-02: **Task 1 COMPLETE.** 6/6 tests pass. Converted 693 imgs → `data/processed/pcb_yolo/` (train 555 / val 72 / test 66; 2,953 boxes — matches published count exactly). Median defect ~45px → confirms `imgsz=1024`. EDA figures + `reports/dataset_stats.md` written and visually verified. Viraj commits each step himself (no Claude attribution). Next: Task 2 (Colab notebook + dataset zip script).
