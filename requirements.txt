@@ -1,0 +1,21 @@
+# Core CV stack (Step 2-3)
+ultralytics>=8.3.0        # YOLOv11 training/inference
+torch>=2.5.0              # backend (mps on Apple Silicon)
+
+# Data prep + EDA (Step 1)
+pillow>=10.0.0
+pyyaml>=6.0
+matplotlib>=3.8.0
+
+# VLM inspection reports (Step 3)
+anthropic>=0.40.0
+
+# Serving (Step 4)
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.9   # file uploads in FastAPI
+streamlit>=1.40.0
+requests>=2.32.0
+
+# Tests
+pytest>=8.0.0

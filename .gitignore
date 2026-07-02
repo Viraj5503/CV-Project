@@ -1,0 +1,28 @@
+# Data — never commit the dataset (956MB); see README for download instructions
+data/raw/
+data/processed/
+
+# Model weights — downloaded/trained artifacts, not source
+models/*.pt
+models/*.onnx
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+# Ultralytics run artifacts
+runs/
+
+# Secrets
+.env
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
