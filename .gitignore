@@ -1,10 +1,12 @@
 # Data — never commit the dataset (956MB); see README for download instructions
 data/raw/
 data/processed/
+data/*.zip
 
-# Model weights — downloaded/trained artifacts, not source
+# Model weights + Colab run artifacts — downloaded/trained, not source
 models/*.pt
 models/*.onnx
+models/pcb_yolo11s_run/
 
 # Python
 .venv/
