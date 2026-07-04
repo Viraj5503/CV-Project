@@ -84,6 +84,7 @@ async def inspect(
     annotated_b64 = base64.standard_b64encode(buf.getvalue()).decode("utf-8")
 
     report = None
+    report_error = None
     if with_report:
         # generate_report reads from a path; hand it the upload re-encoded as JPEG
         with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
@@ -91,6 +92,10 @@ async def inspect(
             tmp_path = Path(tmp.name)
         try:
             report = generate_report(tmp_path, detections)
+        except Exception as exc:
+            # Reports are an optional add-on: a missing key or exhausted credits
+            # must never take down the detection result — degrade with a message.
+            report_error = f"{type(exc).__name__}: {exc}"
         finally:
             tmp_path.unlink(missing_ok=True)
 
@@ -98,5 +103,6 @@ async def inspect(
         "detections": detections,
         "annotated_image_b64": annotated_b64,
         "report": report,
+        "report_error": report_error,
         "inference_ms": round(inference_ms, 1),
     }

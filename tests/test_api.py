@@ -81,6 +81,23 @@ class TestInspect:
         )
         assert resp.status_code == 200
         assert resp.json()["report"] == "## Report"
+        assert resp.json()["report_error"] is None
+
+    def test_report_failure_degrades_gracefully(self, client: TestClient, monkeypatch):
+        """Exhausted credits / missing key must not 500 — detections still come back."""
+
+        def boom(path, dets):
+            raise RuntimeError("credit balance is too low")
+
+        monkeypatch.setattr(api, "generate_report", boom)
+        resp = client.post(
+            "/inspect?with_report=true", files={"image": ("b.png", PNG_BYTES, "image/png")}
+        )
+        assert resp.status_code == 200
+        body = resp.json()
+        assert body["detections"]  # detection result unaffected by report failure
+        assert body["report"] is None
+        assert "credit balance is too low" in body["report_error"]
 
     def test_rejects_non_image_upload(self, client: TestClient):
         resp = client.post("/inspect", files={"image": ("notes.txt", b"hello", "text/plain")})
