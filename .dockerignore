@@ -1,0 +1,14 @@
+# keep the build context to code + weights — and never bake secrets in
+.git
+.venv
+.env
+.pytest_cache
+**/__pycache__
+data
+docs
+notebooks
+reports
+scripts
+tests
+models/pcb_yolo11s_run
+*.zip
