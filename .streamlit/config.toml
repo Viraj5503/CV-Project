@@ -1,0 +1,15 @@
+# PCB-INSPECT theme — colors drawn from the board itself:
+# solder-mask green surface, copper accent, silkscreen-white ink.
+[theme]
+base = "dark"
+primaryColor = "#C87941"           # copper (traces/pads) — sliders, buttons, progress
+backgroundColor = "#101913"        # solder-mask green-black
+secondaryBackgroundColor = "#18231B"
+textColor = "#E8EDE8"              # silkscreen white
+font = "sans-serif"
+headingFont = "monospace"          # silkscreen legends are always mono
+codeFont = "monospace"
+baseRadius = "small"
+
+[browser]
+gatherUsageStats = false
