@@ -3,6 +3,9 @@ data/raw/
 data/processed/
 data/*.zip
 
+# RAG vector index — build artifact, rebuild with: python -m pcb_vision.rag.ingest
+data/chroma/
+
 # Model weights + Colab run artifacts — downloaded/trained, not source
 models/*.pt
 models/*.onnx
