@@ -41,7 +41,12 @@ class AnthropicProvider:
 
 
 class GeminiProvider:
-    DEFAULT_MODEL = "gemini-2.5-flash"  # free tier (AI Studio), no card required
+    # Rolling alias on the *lite* line: free-tier daily quotas are per-model,
+    # Google retires/requotas pinned models without notice (2.5-flash-lite ->
+    # 404, 2.0-flash -> limit 0), and as of 2026-07 every flagship flash
+    # (2.5-flash, 3.5-flash) is capped at 20 req/day free — only the lite line
+    # has a usable free quota. Pin via PCB_RAG_MODEL if reproducibility matters.
+    DEFAULT_MODEL = "gemini-flash-lite-latest"  # free tier (AI Studio), no card
 
     def __init__(self, api_key: str, model: str | None = None):
         from google import genai
